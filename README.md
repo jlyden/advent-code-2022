@@ -33,3 +33,4 @@ vagrant:~$ sudo apt-get update    # update apt-get
 * https://realpython.com/vim-and-python-a-match-made-in-heaven/
 * vim commands: https://vim.rtorr.com/
 * https://code.visualstudio.com/docs/python/python-tutorial
+* https://docs.python-guide.org/writing/structure/

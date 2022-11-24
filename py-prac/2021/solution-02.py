@@ -1,3 +1,4 @@
+"""Straightforward solution separating two problems"""
 def part_one():
 	with open('input-02.txt') as file:
 		horz_pos = 0
