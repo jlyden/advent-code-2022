@@ -1,5 +1,10 @@
+"""https://adventofcode.com/2021/day/1"""
+
+import pathlib
+
 def part_one():
-	with open('input-01.txt') as file:
+	input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
+	with open(input_file) as file:
 		increases = 0
 		previous = 0
 
@@ -19,7 +24,8 @@ def part_one():
 print(part_one())
 
 def part_two():
-	with open('input-01.txt') as file:
+	input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
+	with open(input_file) as file:
 		increases = 0
 		contents = file.readlines()
 		measurements = [int(value) for value in contents]

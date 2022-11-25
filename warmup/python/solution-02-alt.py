@@ -1,4 +1,10 @@
-"""Alternate solution reducing duplicate code between two problems"""
+"""https://adventofcode.com/2021/day/2
+
+Alternate solution reducing duplicate code between two problems
+"""
+
+import pathlib
+
 def update_vert_pos_part_one(vert_pos, vert_change, _):
 	vert_pos = vert_pos + vert_change
 	vert_change = 0
@@ -18,7 +24,8 @@ def runner(part):
 		case _:
 			raise Exception('Invalid part: ' + part)
 
-	with open('input-02.txt') as file:
+	input_file = pathlib.Path(__file__).parent.absolute() / 'input-02.txt'
+	with open(input_file) as file:
 		horz_pos = 0
 		vert_pos = 0
 		vert_change = 0

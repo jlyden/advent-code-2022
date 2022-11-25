@@ -1,6 +1,13 @@
-"""Straightforward solution separating two problems"""
+"""https://adventofcode.com/2021/day/2
+
+Straightforward solution separating two problems
+"""
+
+import pathlib
+
 def part_one():
-	with open('input-02.txt') as file:
+	input_file = pathlib.Path(__file__).parent.absolute() / 'input-02.txt'
+	with open(input_file) as file:
 		horz_pos = 0
 		depth = 0
 
@@ -28,7 +35,8 @@ def part_one():
 print(part_one())
 
 def part_two():
-	with open('input-02.txt') as file:
+	input_file = pathlib.Path(__file__).parent.absolute() / 'input-02.txt'
+	with open(input_file) as file:
 		horz_pos = 0
 		depth = 0
 		aim = 0
