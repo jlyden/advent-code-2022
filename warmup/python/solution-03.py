@@ -7,7 +7,7 @@ To avoid extra installs, sticking to loops here
 import pathlib
 
 def runner(part):
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-03.txt'
+    input_file = pathlib.Path(__file__).parent.absolute() / 'input-mini.txt'
     with open(input_file) as file:
         contents = file.readlines()
         line_count = len(contents)
@@ -27,16 +27,22 @@ def runner(part):
         return gamma_rate * epsilon_rate
     
     # Continue from here for part_two
-    for i in range(0,len(gamma_rate)):
-        zero_list, one_list = split_list_between_digits_at_position(contents_processed)
+    zero_list, one_list = split_list_between_digits_at_position(contents_processed, 0)
+    init_ox_gen_list, init_co_scrub_list = determine_most_least_list(zero_list, one_list)
 
+    ox_gen_rate = calculate_ox_gen_rate(init_ox_gen_list, len(gamma_rate_string))
+    co_scrub_rate = calculate_co_scrub_rate(init_co_scrub_list, len(gamma_rate_string))
 
+    print(ox_gen_rate)
+    print(co_scrub_rate)
 
-
-    return
+    return ox_gen_rate * co_scrub_rate
 
 def convert_binary_string_to_int_list(line):
     return [int(value) for value in list(line) if value != '\n']
+
+def convert_int_list_to_binary_string(list):
+    return ''.join([ox_gen_list[0]])
 
 """Decided two methods was better than a conditional evaluated on every line"""
 def initiate_zero_count(digits):
@@ -67,25 +73,44 @@ def split_list_between_digits_at_position(list, position):
     zero_list = []
     one_list = []
     for item in list:
-        if item[position] == '0':
+        if item[position] == 0:
             zero_list.append(item)
         else:
             one_list.append(item)
     return zero_list, one_list
 
-def get_most_or_least_list(zero_list, one_list, most):
+def determine_most_least_list(zero_list, one_list):
     zero_len = len(zero_list)
     one_len = len(one_list)
-
     lists_are_equal = zero_len == one_len
-    if lists_are_equal:
-        return one_list if most else zero_list
 
-    if most:
-        return zero_list if zero_len > one_len else one_list
-    else:
-        return zero_list if zero_len < one_len else one_list
+    if lists_are_equal or one_len > zero_len:
+        return one_list, zero_list
+    
+    return zero_list, one_list
+
+def calculate_ox_gen_rate(ox_gen_list, digit_range):
+    print(ox_gen_list)
+    print(digit_range)
+    for i in range(1, digit_range):
+        zero_list, one_list = split_list_between_digits_at_position(ox_gen_list, i)
+        ox_gen_list, drop_co_scrub_list = determine_most_least_list(zero_list, one_list)
+        print(ox_gen_list)
+        if len(ox_gen_list) == 1:
+            break
+
+    return int(, 2)
 
 
-print(runner('one'))
+def calculate_co_scrub_rate(co_scrub_list, digit_range):
+    for i in range(1, digit_range):
+        zero_list, one_list = split_list_between_digits_at_position(co_scrub_list, i)
+        drop_ox_gen_list, co_scrub_list = determine_most_least_list(zero_list, one_list)
+        if len(co_scrub_list) == 1:
+            break
+
+    return int(''.join(co_scrub_list[0]), 2)
+
+
+#print(runner('one'))
 print(runner('two'))
