@@ -2,9 +2,11 @@
 
 ## Progress
 ### Preparation
+
 Working through some 2021 puzzles in python.
-[x] Day One
-[x] Day Two
+* [x] Day One
+* [x] Day Two
+* [ ] Day Three
 
 ## Getting Started
 ### No VM
@@ -44,6 +46,3 @@ vagrant:~$ sudo apt-get update    # update apt-get
 * https://docs.python-guide.org/writing/structure/
 * https://realpython.com/documenting-python-code/#docstring-types
 * https://docs.python.org/3.10/library/pathlib.html
-
-### Rust
-* https://www.rust-lang.org/learn
