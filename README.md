@@ -1,6 +1,10 @@
 # Advent of Code 2022
 
 ## Progress
+### 2022!
+* [ ] Day One
+  * [x] Part One
+
 ### Preparation
 Working through some 2021 puzzles in python.
 * [x] Day One
@@ -8,12 +12,11 @@ Working through some 2021 puzzles in python.
 * [x] Day Three
 * [ ] Day Four
 
-### 2022!
-* [ ] Day One
-
 ## Getting Started
 ### No VM
 With [Python](https://www.python.org/downloads/) installed locally and [VSCode Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), you can run the solutions inside VSCode.
+
+I'm working in Python 3.10.
 
 ### With VM
 #### Running
