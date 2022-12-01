@@ -2,8 +2,7 @@
 
 ## Progress
 ### 2022!
-* [ ] Day One
-  * [x] Part One
+* [x] Day One
 
 ### Preparation
 Working through some 2021 puzzles in python.
@@ -46,7 +45,8 @@ vagrant:~$ sudo apt-get update    # update apt-get
 * https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-project-setup
 * vim commands: https://vim.rtorr.com/
 
-### Python  
+### Python
+* https://docs.python.org/3.10/
 * https://realpython.com/vim-and-python-a-match-made-in-heaven/
 * https://code.visualstudio.com/docs/python/python-tutorial
 * https://docs.python-guide.org/writing/structure/
