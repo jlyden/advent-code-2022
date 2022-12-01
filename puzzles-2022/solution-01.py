@@ -1,12 +1,9 @@
 """https://adventofcode.com/2022/day/1"""
 
-import pathlib
+from helpers import files
 
 def runner(part):
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
-    with open(input_file) as file:
-        lines = file.readlines()
-
+    lines = files.get_contents_of_input_file('input-01.txt')
     inventories = process_input(lines)
     calories_in_inventories = [sum(inventory) for inventory in inventories]
 

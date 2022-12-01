@@ -1,24 +1,36 @@
 # Advent of Code 2022
 
+## Getting Started
+With [Python](https://www.python.org/downloads/) installed locally and [VSCode Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), you can run the solutions inside VSCode.
+
+I'm working in Python 3.10.
+
 ## Progress
-### 2022!
+### 2022
 * [x] Day One
 
-### Preparation
-Working through some 2021 puzzles in python.
+### Prep
+Working through some 2021 puzzles to shake the dust off my python.
 * [x] Day One
 * [x] Day Two
 * [x] Day Three
 * [ ] Day Four
 
-## Getting Started
-### No VM
-With [Python](https://www.python.org/downloads/) installed locally and [VSCode Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), you can run the solutions inside VSCode.
+## Resources
+* https://adventofcode.com/
 
-I'm working in Python 3.10.
+### Python
+* https://docs.python.org/3.10/
+* https://code.visualstudio.com/docs/python/python-tutorial
+* https://docs.python-guide.org/writing/structure/
+* https://realpython.com/documenting-python-code/#docstring-types
 
-### With VM
-#### Running
+---
+
+## VM Stuff
+Before I realized VS Code could run solutions, I was running them in a VM.
+
+### Running
 
 ```
 $ cd <folder-with-Vagrantfile>
@@ -28,7 +40,7 @@ vagrant:~$ exit   # exit VM
 $ vagrant halt    # shut down VM
 ```
 
-#### Updating
+### Updating
 
 ```
 $ vagrant box update              # update box
@@ -36,19 +48,9 @@ vagrant:~$ do-release-upgrade     # update the OS
 vagrant:~$ sudo apt-get update    # update apt-get
 ```
 
-## Resources
-* https://adventofcode.com/
-
-### VM/Linux
+### Resources
 * https://medium.com/@botdotcom/installing-virtualbox-and-vagrant-on-windows-10-2e5cbc6bd6ad
   * os: ubuntu/focal64
 * https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-project-setup
 * vim commands: https://vim.rtorr.com/
-
-### Python
-* https://docs.python.org/3.10/
 * https://realpython.com/vim-and-python-a-match-made-in-heaven/
-* https://code.visualstudio.com/docs/python/python-tutorial
-* https://docs.python-guide.org/writing/structure/
-* https://realpython.com/documenting-python-code/#docstring-types
-* https://docs.python.org/3.10/library/pathlib.html
