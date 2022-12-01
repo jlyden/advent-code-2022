@@ -10,15 +10,15 @@ def runner(part):
     input_file = pathlib.Path(__file__).parent.absolute() / 'input-03.txt'
     with open(input_file) as file:
         contents = file.readlines()
-        line_count = len(contents)
-        contents_processed = []
-        digits = convert_binary_string_to_int_list(contents[0])
-        zero_count = initiate_zero_count(digits)
+    line_count = len(contents)
+    contents_processed = []
+    digits = convert_binary_string_to_int_list(contents[0])
+    zero_count = initiate_zero_count(digits)
+    contents_processed.append(digits)
+    for i in range(1, line_count):
+        digits = convert_binary_string_to_int_list(contents[i])
+        zero_count = update_zero_count(zero_count, digits)
         contents_processed.append(digits)
-        for i in range(1, line_count):
-            digits = convert_binary_string_to_int_list(contents[i])
-            zero_count = update_zero_count(zero_count, digits)
-            contents_processed.append(digits)
     gamma_rate_string, epsilon_rate_string = determine_binary_rates(zero_count, line_count)
     
     if part == 'one':
