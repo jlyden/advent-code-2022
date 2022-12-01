@@ -2,11 +2,14 @@
 
 ## Progress
 ### Preparation
-
 Working through some 2021 puzzles in python.
 * [x] Day One
 * [x] Day Two
-* [ ] Day Three
+* [x] Day Three
+* [ ] Day Four
+
+### 2022!
+* [ ] Day One
 
 ## Getting Started
 ### No VM

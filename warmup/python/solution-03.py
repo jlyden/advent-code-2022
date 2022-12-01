@@ -7,7 +7,7 @@ To avoid extra installs, sticking to loops here
 import pathlib
 
 def runner(part):
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-mini.txt'
+    input_file = pathlib.Path(__file__).parent.absolute() / 'input-03.txt'
     with open(input_file) as file:
         contents = file.readlines()
         line_count = len(contents)
@@ -32,17 +32,13 @@ def runner(part):
 
     ox_gen_rate = calculate_ox_gen_rate(init_ox_gen_list, len(gamma_rate_string))
     co_scrub_rate = calculate_co_scrub_rate(init_co_scrub_list, len(gamma_rate_string))
-
-    print(ox_gen_rate)
-    print(co_scrub_rate)
-
     return ox_gen_rate * co_scrub_rate
 
 def convert_binary_string_to_int_list(line):
     return [int(value) for value in list(line) if value != '\n']
 
 def convert_int_list_to_binary_string(list):
-    return ''.join([ox_gen_list[0]])
+    return ''.join([str(element) for element in list])
 
 """Decided two methods was better than a conditional evaluated on every line"""
 def initiate_zero_count(digits):
@@ -90,16 +86,13 @@ def determine_most_least_list(zero_list, one_list):
     return zero_list, one_list
 
 def calculate_ox_gen_rate(ox_gen_list, digit_range):
-    print(ox_gen_list)
-    print(digit_range)
     for i in range(1, digit_range):
         zero_list, one_list = split_list_between_digits_at_position(ox_gen_list, i)
         ox_gen_list, drop_co_scrub_list = determine_most_least_list(zero_list, one_list)
-        print(ox_gen_list)
         if len(ox_gen_list) == 1:
             break
-
-    return int(, 2)
+    ox_gen_string = convert_int_list_to_binary_string(ox_gen_list[0])
+    return int(ox_gen_string, 2)
 
 
 def calculate_co_scrub_rate(co_scrub_list, digit_range):
@@ -108,9 +101,8 @@ def calculate_co_scrub_rate(co_scrub_list, digit_range):
         drop_ox_gen_list, co_scrub_list = determine_most_least_list(zero_list, one_list)
         if len(co_scrub_list) == 1:
             break
+    co_scrub_string = convert_int_list_to_binary_string(co_scrub_list[0])
+    return int(co_scrub_string, 2)
 
-    return int(''.join(co_scrub_list[0]), 2)
-
-
-#print(runner('one'))
+print(runner('one'))
 print(runner('two'))
