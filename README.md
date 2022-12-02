@@ -8,6 +8,7 @@ I'm working in Python 3.10.
 ## Progress
 ### 2022
 * [x] Day One
+* [ ] Day Two
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.

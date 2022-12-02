@@ -24,7 +24,7 @@ def runner(part):
         case _:
             raise Exception('Invalid part: ' + part)
 
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-02.txt'
+    input_file = pathlib.Path(__file__).parent / 'input' / 'input-02.txt'
     with open(input_file) as file:
         horz_pos = 0
         vert_pos = 0

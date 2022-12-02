@@ -1,9 +1,10 @@
 """https://adventofcode.com/2021/day/1"""
 
 import pathlib
+from helpers import files
 
 def part_one():
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
+    input_file = pathlib.Path(__file__).parent / 'input' / 'input-01.txt'
     with open(input_file) as file:
         increases = 0
         previous = 0
@@ -24,11 +25,9 @@ def part_one():
 print(part_one())
 
 def part_two():
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
-    with open(input_file) as file:
-        increases = 0
-        contents = file.readlines()
-    measurements = [int(value) for value in contents]
+    increases = 0
+    lines = files.get_contents_of_input_file('input-01.txt')
+    measurements = [int(value) for value in lines]
     length = len(measurements)
 
     previous = sum(measurements[0:3])

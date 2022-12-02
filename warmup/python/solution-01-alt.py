@@ -3,14 +3,12 @@
 Alt approach with more shared code
 """
 
-import pathlib
+from helpers import files
 
 def runner(part):
-    input_file = pathlib.Path(__file__).parent.absolute() / 'input-01.txt'
-    with open(input_file) as file:
-        increases = 0
-        contents = file.readlines()
-    measurements = [int(value) for value in contents]
+    increases = 0
+    lines = files.get_contents_of_input_file('input-01.txt')
+    measurements = [int(value) for value in lines]
     length = len(measurements)
 
     match part:
