@@ -1,22 +1,19 @@
 """https://adventofcode.com/2021/day/4"""
 
-import re
 from helpers import files
+from helpers import bingo
 
 def part_one():
     lines = files.get_contents_of_input_file('input-mini.txt')
-
-    # store numbers to be called
     callables = lines.pop(0).replace('\n','').split(',')
-    print(callables)
-
-    # setup bingo records
     bingo_records = prepare_bingo_records(lines)
 
-    # find first winning board
-
-    # calculcate score
-    return
+    for number_called in callables:
+        winning_board = check_boards(bingo_records, number_called)
+        if winning_board:
+            break
+    
+    return calculate_score(winning_board, number_called)
 
 def prepare_bingo_records(lines):
     bingo_records = []
@@ -30,45 +27,23 @@ def prepare_bingo_records(lines):
         this_board = []
         # next 5 rows will be board
         for i in range(5):
-            row = re.split('\s+', lines.pop(0).replace('\n',''))
+            row = lines.pop(0).replace('\n', '').split()
             this_board.append(row)
-        bingo_records.append(BingoRecord(this_board))
+        bingo_records.append(bingo.BingoRecord(this_board))
 
     return bingo_records
 
-
-"""Class representing a BingoRecord
-
-board: two-dimensional array
-board_sorted: sorted flat list of values on board
-marks: count of numbers on board that have been marked X
-
-"""
-class BingoRecord:
-    MARK = 'X'
-
-    def __init__(self, board):
-        self.board = board
-        self.board_sorted = self.generate_sorted_board()
-        self.marks = 0
-
-    def __str__(self):
-        return 'BingoRecord: marks: ' + str(self.marks) + ' | board: ' + str(self.board)
-
-    def generate_sorted_board(self):
-        return [item for row in self.board for item in row].sort()
-
-    def is_number_on_board(self, number):
-        return number in self.board_sorted
-
-    def mark_board(self, number):
-        x,y = self.get_index_for_number(self, number)
-        self.board[x,y] = self.MARK
-        self.marks += 1
-
-    def get_index_for_number(self, number):
-        for i, e in enumerate(self.board):
-            return i, e.index(number)
+def check_boards(bingo_records, number_called):
+    print(number_called)
+    for record in bingo_records:
+        print(record)
+        if record.is_number_on_board(number_called):
+            record.mark_board(number_called)
+            print(record)
+            if record.get_marks_count() > 4:
+                #TODO
+                return True
+    return False
 
 
 print(part_one())

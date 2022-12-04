@@ -12,6 +12,8 @@ I'm running Python 3.10.
   * [x] alt approach
 * [x] Day Three
   * [x] alt approach
+* [ ] Day Four
+  * [x] part one
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.
