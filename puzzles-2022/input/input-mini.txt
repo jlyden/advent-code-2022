@@ -1,6 +1,25 @@
-vJrwpWtwJgWrhcsFMMfFFhFp
-jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
-PmmdzqPrVvPwwTWBwg
-wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
-ttgJtRGJQctTZtZT
-CrZsJsPPZsGzwwsLwLmpwMDw
+C X
+A Y
+C Z
+B Y
+C Z
+A Z
+B Y
+C Z
+C Z
+B X
+A X
+A Z
+C Z
+C X
+A Z
+A Z
+C Z
+A X
+A Z
+A Z
+A Z
+A Z
+A Z
+C Z
+A Z

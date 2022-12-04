@@ -1,14 +1,14 @@
 """https://adventofcode.com/2022/day/2
 
 possible approaches
- - build evaluators for existing data - this file
+ - build evaluators for existing data
  - transform data, then evaluate - alt coming soon
 """
 
 from helpers import files
 
 def runner(part):
-    lines = files.get_contents_of_input_file('input-mini.txt')
+    lines = files.get_contents_of_input_file('input-02.txt')
 
     if part == 'one':
         return sum([score_part_one_round(line) for line in lines]) 
@@ -37,15 +37,12 @@ def score_part_one_round(raw_round):
 
     round = raw_round.replace('\n','')
     if round in lose:
-        print('round in lose: ' + round)
         return lose.index(round) + 1
     
     if round in draw:
-        print('round in draw: ' + round)
         return draw.index(round) + 1 + 3
 
     if round in win:
-        print('round in win: ' + round)
         return win.index(round) + 1 + 6
     
     raise Exception('Invalid round: ' + round)
@@ -77,8 +74,6 @@ def score_part_two_round(raw_round):
 """Return second player score for round - based on part one info
 
 raw_round input looks like 'A Y\n'
-
-TODO: this is not working
 """
 def score_part_one_round_alt(raw_round):
     moves = transform_round_to_int_list(raw_round)
@@ -90,7 +85,6 @@ def score_part_one_round_alt(raw_round):
     if draw(moves):
         bonus = 3
 
-    print('bonus: ' + str(bonus) + ' on moves: ' + str(moves))
     # if not win or draw, no bonus
     return moves[1] + bonus
 
@@ -114,10 +108,9 @@ def draw(moves):
 
 def player_two_win(moves):
     rock_beats_scissors = moves == [3,1]
-    return rock_beats_scissors | moves[0] < moves[1]
+    scissors_beats_rock = moves == [1,3]
+    return rock_beats_scissors or (moves[0] < moves[1] and not scissors_beats_rock)
 
 print(runner('one'))
-# TODO: this is not working
-#print(runner('one-alt'))
-
+print(runner('one-alt'))
 print(runner('two'))

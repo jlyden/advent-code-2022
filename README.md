@@ -9,8 +9,9 @@ I'm running Python 3.10.
 ### 2022
 * [x] Day One
 * [x] Day Two
-  * [ ] alt approach
-* [X] Day Three
+  * [x] alt approach
+* [x] Day Three
+  * [x] alt approach
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.
