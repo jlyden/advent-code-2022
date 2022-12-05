@@ -18,7 +18,7 @@ def part_one():
 def prepare_bingo_records(lines):
     bingo_records = []
     expected_record_count = int(len(lines)/6)
-    for i in range(expected_record_count):
+    for _ in range(expected_record_count):
         # first row will be blank
         blank_row = lines.pop(0)
         if (blank_row != '\n'):
@@ -26,9 +26,10 @@ def prepare_bingo_records(lines):
 
         this_board = []
         # next 5 rows will be board
-        for i in range(5):
+        for _ in range(5):
             row = lines.pop(0).replace('\n', '').split()
             this_board.append(row)
+        print(this_board)
         bingo_records.append(bingo.BingoRecord(this_board))
 
     return bingo_records
@@ -45,5 +46,7 @@ def check_boards(bingo_records, number_called):
                 return True
     return False
 
+def calculate_score():
+    return
 
 print(part_one())
