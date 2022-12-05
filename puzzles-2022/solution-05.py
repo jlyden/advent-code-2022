@@ -7,10 +7,13 @@ https://docs.python.org/2/library/collections.html#collections.deque
 
 from helpers import files
 
-def part_one():
-    lines = files.get_contents_of_input_file('input-mini.txt')
+def runner(part):
+    lines = files.get_contents_of_input_file('input-05.txt')
     stacks, unprocessed_moves = process_lines(lines)
-    stacks_after_moves = move_crates(stacks, unprocessed_moves)
+    if part == 'one':
+        stacks_after_moves = move_crates_part_one(stacks, unprocessed_moves)
+    elif part == 'two':
+        stacks_after_moves = move_crates_part_two(stacks, unprocessed_moves)
     return get_message(stacks_after_moves)
 
 def process_lines(lines):
@@ -28,7 +31,6 @@ def process_lines(lines):
         crate_slices.append(crate_slice)
 
     # flip crate_slices array to create stacks
-    print(crate_slices)
     stacks = [ [] for _ in range(len(crate_slices[0])) ]
     for slice in crate_slices:
         for count, crate_label in enumerate(slice):
@@ -40,22 +42,31 @@ def process_lines(lines):
 
     return stacks, unprocessed_moves
 
-def move_crates(stacks, unprocessed_moves):
-    # loop through moves
+def move_crates_part_one(stacks, unprocessed_moves):
     for sentence in unprocessed_moves:
-        # tried isnumeric(), was not picking up all ints - TODO: circle back
-        # parse move
-        move = [int(value) for count,value in enumerate(sentence.split(' ')) if count % 2 == 1]
-        count, source, target = move
-
-        # in loop:
+        count, source, target = parse_move_sentence(sentence)
         for _ in range(count):
             crate = stacks[source-1].pop()
             stacks[target-1].append(crate)
     return stacks
 
-def get_message(stacks):
-    # TODO:
-    return
+def move_crates_part_two(stacks, unprocessed_moves):
+    for sentence in unprocessed_moves:
+        count, source, target = parse_move_sentence(sentence)
+        len_source = len(stacks[source-1])
+        crates = stacks[source-1][len_source-count:]
+        stacks[source-1] = stacks[source-1][0:len_source-count]
+        stacks[target-1] = stacks[target-1] + crates
+    return stacks
 
-print(part_one())
+def parse_move_sentence(sentence):
+    # tried isnumeric(), was not picking up all ints - TODO: circle back
+    move = [int(value) for count,value in enumerate(sentence.split(' ')) if count % 2 == 1]
+    count, source, target = move
+    return count, source, target
+
+def get_message(stacks):
+    return ''.join([stack[-1] for stack in stacks])
+
+print(runner('one'))
+print(runner('two'))
