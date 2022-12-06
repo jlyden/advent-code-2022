@@ -15,7 +15,7 @@ I'm running Python 3.11.
 * [x] Day Four
   * [x] alt approach
 * [x] Day Five
-* [ ] Day Six
+* [x] Day Six
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.

@@ -2,7 +2,7 @@
 
 import pathlib
 
-def part_one():
+def get_first_marker_for_length(length):
     input_file = pathlib.Path(__file__).parent / 'input' / 'input-06.txt'
 
     with open(input_file) as file:
@@ -10,21 +10,24 @@ def part_one():
     
     count = 0
     while True:
-        potential_marker = datastream[count:count + 4]
-        if is_marker(potential_marker):
-            return count + 4
+        potential_marker = datastream[count:count + length]
+        if is_marker(potential_marker, length):
+            return count + length
             
-        if len(potential_marker) < 4:
+        if len(potential_marker) < length:
             break
 
         count += 1
 
     # Broke out of loop, which means value was not found
     raise Exception('Marker not found in this data')    
-            
-def is_marker(potential_marker):
+
+
+def is_marker(potential_marker, length):
     # sets values are always unique
     marker_set = set([*potential_marker])
-    return len(marker_set) == 4
+    return len(marker_set) == length
 
-print(part_one())
+
+print(get_first_marker_for_length(4))
+print(get_first_marker_for_length(14))
