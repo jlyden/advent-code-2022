@@ -3,7 +3,7 @@
 ## Getting Started
 With [Python](https://www.python.org/downloads/) installed locally and [VSCode Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), you can run the solutions inside VSCode.
 
-I'm running Python 3.10.
+I'm running Python 3.11.
 
 ## Progress
 ### 2022
@@ -14,7 +14,8 @@ I'm running Python 3.10.
   * [x] alt approach
 * [x] Day Four
   * [x] alt approach
-* [ ] Day Five
+* [x] Day Five
+* [ ] Day Six
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.

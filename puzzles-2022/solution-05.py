@@ -11,9 +11,9 @@ def runner(part):
     lines = files.get_contents_of_input_file('input-05.txt')
     stacks, unprocessed_moves = process_lines(lines)
     if part == 'one':
-        stacks_after_moves = move_crates_part_one(stacks, unprocessed_moves)
+        stacks_after_moves = move_crates_singly(stacks, unprocessed_moves)
     elif part == 'two':
-        stacks_after_moves = move_crates_part_two(stacks, unprocessed_moves)
+        stacks_after_moves = move_crates_stacked(stacks, unprocessed_moves)
     return get_message(stacks_after_moves)
 
 def process_lines(lines):
@@ -42,7 +42,8 @@ def process_lines(lines):
 
     return stacks, unprocessed_moves
 
-def move_crates_part_one(stacks, unprocessed_moves):
+"""crates move from stack one-at-a-time, so their order is reversed"""
+def move_crates_singly(stacks, unprocessed_moves):
     for sentence in unprocessed_moves:
         count, source, target = parse_move_sentence(sentence)
         for _ in range(count):
@@ -50,7 +51,8 @@ def move_crates_part_one(stacks, unprocessed_moves):
             stacks[target-1].append(crate)
     return stacks
 
-def move_crates_part_two(stacks, unprocessed_moves):
+"""multiple crates move from stack as a mini-stack, order preserved"""
+def move_crates_stacked(stacks, unprocessed_moves):
     for sentence in unprocessed_moves:
         count, source, target = parse_move_sentence(sentence)
         len_source = len(stacks[source-1])
