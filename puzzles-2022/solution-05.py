@@ -45,7 +45,7 @@ def process_lines(lines):
 """crates move from stack one-at-a-time, so their order is reversed"""
 def move_crates_singly(stacks, unprocessed_moves):
     for sentence in unprocessed_moves:
-        count, source, target = parse_move_sentence(sentence)
+        [count, source, target] = parse_move_sentence(sentence)
         for _ in range(count):
             crate = stacks[source-1].pop()
             stacks[target-1].append(crate)
@@ -54,7 +54,7 @@ def move_crates_singly(stacks, unprocessed_moves):
 """multiple crates move from stack as a mini-stack, order preserved"""
 def move_crates_stacked(stacks, unprocessed_moves):
     for sentence in unprocessed_moves:
-        count, source, target = parse_move_sentence(sentence)
+        [count, source, target] = parse_move_sentence(sentence)
         len_source = len(stacks[source-1])
         crates = stacks[source-1][len_source-count:]
         stacks[source-1] = stacks[source-1][0:len_source-count]
@@ -63,9 +63,7 @@ def move_crates_stacked(stacks, unprocessed_moves):
 
 def parse_move_sentence(sentence):
     # tried isnumeric(), was not picking up all ints - TODO: circle back
-    move = [int(value) for count,value in enumerate(sentence.split(' ')) if count % 2 == 1]
-    count, source, target = move
-    return count, source, target
+     return [int(value) for count,value in enumerate(sentence.split(' ')) if count % 2 == 1]
 
 def get_message(stacks):
     return ''.join([stack[-1] for stack in stacks])
