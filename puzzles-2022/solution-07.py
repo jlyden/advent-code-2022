@@ -1,4 +1,7 @@
-"""https://adventofcode.com/2022/day/7"""
+"""https://adventofcode.com/2022/day/7
+
+Incomplete
+"""
 
 import re
 from helpers import files
@@ -9,6 +12,7 @@ def part_one(dir_size_limit):
     requested_sizes = get_dir_sizes(dir_structure, [])
     return sum(requested_sizes)
 
+# TODO: maybe don't fold it together? make dirs {}
 def build_directory_structure(lines):
     pwd = []
     dirs = []

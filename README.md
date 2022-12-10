@@ -16,6 +16,9 @@ I'm running Python 3.11.
   * [x] alt approach
 * [x] Day Five
 * [x] Day Six
+* [ ] Day Seven - late!
+* [ ] Day Eight - late!
+* [ ] Day Nine - gonna be late
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.
