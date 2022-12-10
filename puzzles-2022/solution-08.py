@@ -18,25 +18,29 @@ def build_two_d_array(lines):
     return output
 
 def find_visible_trees(tree_grid):
-    tree_grid_side = len(tree_grid)
+    tree_grid_width = len(tree_grid[0])
+    tree_grid_height = len(tree_grid)
+
     # trees on perimeter
-    count = calculate_square_perimeter(tree_grid_side)
+    count = calculate_perimeter(tree_grid_width, tree_grid_height)
 
     # evalute interior trees
-    tree_grid_range = range(1, tree_grid_side - 1)
-    for row_index in tree_grid_range:
+    tree_grid_width_range = range(1, tree_grid_width - 1)
+    tree_grid_height_range = range(1, tree_grid_height - 1)
+    for row_index in tree_grid_width_range:
         tree_row = tree_grid[row_index]
-        for col_index in tree_grid_range:
+        for col_index in tree_grid_height_range:
             if is_visible_from_row(col_index, tree_row):
                 count += 1
             elif is_visible_from_column(row_index, col_index, tree_grid):
                 count += 1
     return count
 
-def calculate_square_perimeter(side):
-    side_without_corners = side - 2
+def calculate_perimeter(width, height):
+    width_without_corners = width - 2
+    height_without_corners = height - 2
     corners = 4
-    return (side_without_corners * 4) + corners
+    return (width_without_corners * 2) + (height_without_corners * 2) + corners
 
 def is_visible_from_row(col_index, tree_row):
     tree = tree_row[col_index]
@@ -48,6 +52,7 @@ def is_visible_from_row(col_index, tree_row):
         return True
     return False
 
+# TODO: double check me
 def is_visible_from_column(row_index, col_index, tree_grid):
     tree_grid_side = len(tree_grid)
     tree = tree_grid[row_index][col_index]
