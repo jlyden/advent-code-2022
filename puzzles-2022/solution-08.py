@@ -1,6 +1,6 @@
 """https://adventofcode.com/2022/day/8
 
-Incomplete and Buggy
+Part One done
 """
 
 from helpers import files
@@ -27,12 +27,12 @@ def find_visible_trees(tree_grid):
     # evalute interior trees
     tree_grid_width_range = range(1, tree_grid_width - 1)
     tree_grid_height_range = range(1, tree_grid_height - 1)
-    for row_index in tree_grid_width_range:
-        tree_row = tree_grid[row_index]
-        for col_index in tree_grid_height_range:
-            if is_visible_from_row(col_index, tree_row):
+    for tree_row_index in tree_grid_width_range:
+        tree_row = tree_grid[tree_row_index]
+        for tree_col_index in tree_grid_height_range:
+            if is_visible_from_row(tree_col_index, tree_row):
                 count += 1
-            elif is_visible_from_column(row_index, col_index, tree_grid):
+            elif is_visible_from_column(tree_row_index, tree_col_index, tree_grid):
                 count += 1
     return count
 
@@ -42,31 +42,31 @@ def calculate_perimeter(width, height):
     corners = 4
     return (width_without_corners * 2) + (height_without_corners * 2) + corners
 
-def is_visible_from_row(col_index, tree_row):
-    tree = tree_row[col_index]
-    left_side = tree_row[0:col_index]
+def is_visible_from_row(tree_col_index, tree_row):
+    tree = tree_row[tree_col_index]
+    left_side = tree_row[0:tree_col_index]
     if is_visible_on_horizontal_side(left_side, tree):
         return True
-    right_side = tree_row[col_index+1:]
+    right_side = tree_row[tree_col_index+1:]
     if is_visible_on_horizontal_side(right_side, tree):
         return True
     return False
 
 # TODO: double check me
-def is_visible_from_column(row_index, col_index, tree_grid):
-    tree_grid_side = len(tree_grid)
-    tree = tree_grid[row_index][col_index]
-    col_top_range = range(0,row_index)
-    if is_visible_from_vertical_range(tree_grid, row_index, col_top_range, tree):
+def is_visible_from_column(tree_row_index, tree_col_index, tree_grid):
+    tree_grid_height = len(tree_grid)
+    tree = tree_grid[tree_row_index][tree_col_index]
+    col_top_range = range(0,tree_row_index)
+    if is_visible_from_vertical_range(tree_grid, tree_col_index, col_top_range, tree):
         return True
-    col_bottom_range = range(row_index, tree_grid_side)
-    if is_visible_from_vertical_range(tree_grid, row_index, col_bottom_range, tree):
+    col_bottom_range = range(tree_row_index+1, tree_grid_height)
+    if is_visible_from_vertical_range(tree_grid, tree_col_index, col_bottom_range, tree):
         return True
     return False
 
-def is_visible_from_vertical_range(tree_grid, row_index, vertical_range, tree):
+def is_visible_from_vertical_range(tree_grid, col_index, vertical_range, tree):
     for index in vertical_range:
-        other_tree = tree_grid[row_index][index]
+        other_tree = tree_grid[index][col_index]
         if other_tree >= tree:
             return False
     return True
@@ -78,4 +78,4 @@ def is_visible_on_horizontal_side(side, tree):
             return False
     return True
 
-print(part_one()) # 2666 is too high ):
+print(part_one())

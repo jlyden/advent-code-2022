@@ -18,6 +18,7 @@ I'm running Python 3.11.
 * [x] Day Six
 * [ ] Day Seven - late!
 * [ ] Day Eight - late!
+  * [x] Part One
 * [ ] Day Nine - late!
 * [x] Day Ten
 
