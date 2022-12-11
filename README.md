@@ -19,8 +19,7 @@ I'm running Python 3.11.
 * [ ] Day Seven - late!
 * [ ] Day Eight - late!
 * [ ] Day Nine - late!
-* [ ] Day Ten
-  * [x] part one
+* [x] Day Ten
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.

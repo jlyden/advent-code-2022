@@ -2,12 +2,43 @@
 
 from helpers import files
 
-def part_one():
+def runner(part):
     lines = files.get_contents_of_input_file('input-10.txt')
     x_values = calculcate_x_values(lines)
-    key_signal_strengths = calculate_key_signal_strengths(x_values)
-    print(key_signal_strengths)
-    return int(sum(key_signal_strengths))
+
+    if part == 'one':
+        key_signal_strengths = calculate_key_signal_strengths(x_values)
+        return sum(key_signal_strengths)
+
+    draw_crt_rows(x_values)
+    return
+
+# TODO: start with solution that works, then optimize to avoid double looping
+def draw_crt_rows(x_values):
+    crt_rows = []
+    crt_row = []
+    crt_pos = 0
+    len_x_vals = len(x_values)
+
+    for index in range(1, len_x_vals):
+        X = x_values[index]
+        sprite_range = [X-1, X, X+1]
+        if crt_pos in sprite_range:
+            crt_row.append('#')
+        else:
+            crt_row.append('.')
+        
+        crt_pos += 1
+
+        # end of crt row
+        if crt_pos == 40:
+            crt_line = ''.join(crt_row)
+            print(crt_line)
+            crt_rows.append(crt_line)
+            crt_row = []
+            crt_pos = 0
+
+    return crt_rows
 
 def calculate_key_signal_strengths(x_values):
     key_signal_strengths = []
@@ -30,7 +61,8 @@ def calculcate_x_values(lines):
             V = float(line.split(' ')[1])
             current_X = x_values[-1]
             x_values.append(current_X)
-            x_values.append(current_X + V)
+            x_values.append(int(current_X + V))
     return x_values
 
-print(part_one())
+print(runner('one'))
+print(runner('two'))
