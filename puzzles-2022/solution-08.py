@@ -3,19 +3,36 @@
 Part One done
 """
 
+from helpers import arrays
 from helpers import files
 
-def part_one():
-    lines = files.get_contents_of_input_file('input-08.txt')
-    tree_grid = build_two_d_array(lines)
-    return find_visible_trees(tree_grid)
+def runner(part):
+    lines = files.get_contents_of_input_file('input-mini.txt')
+    tree_grid = arrays.build_two_d_int_array(lines)
+    if part == 'one':
+        return find_visible_trees(tree_grid)
 
-def build_two_d_array(lines):
-    output = []
-    for line in lines:
-        digits = [int(x) for x in str(line) if x != '\n']
-        output.append(digits)
-    return output
+    return calculate_scenic_scores.sort(reverse=True)[0]
+
+def calculate_scenic_scores(tree_grid):
+    scenic_scores = []
+
+    tree_grid_width = len(tree_grid[0])
+    tree_grid_height = len(tree_grid)
+
+    # can skip all perimeter trees, b/c 0 vis on one side kills score
+    # evalute interior trees
+    tree_grid_width_range = range(1, tree_grid_width - 1)
+    tree_grid_height_range = range(1, tree_grid_height - 1)
+    for tree_row_index in tree_grid_width_range:
+        for tree_col_index in tree_grid_height_range:
+            tree = tree_grid[tree_row_index][tree_col_index]
+            # TODO: check up, left, right down
+            # if other_tree < tree, vis and unblocked
+            # if other_tree >= tree, vis and blocked
+            # multiply vis tree counts for score and push
+
+    return
 
 def find_visible_trees(tree_grid):
     tree_grid_width = len(tree_grid[0])
@@ -52,7 +69,6 @@ def is_visible_from_row(tree_col_index, tree_row):
         return True
     return False
 
-# TODO: double check me
 def is_visible_from_column(tree_row_index, tree_col_index, tree_grid):
     tree_grid_height = len(tree_grid)
     tree = tree_grid[tree_row_index][tree_col_index]
@@ -78,4 +94,4 @@ def is_visible_on_horizontal_side(side, tree):
             return False
     return True
 
-print(part_one())
+print(runner('one'))

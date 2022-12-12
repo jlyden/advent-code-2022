@@ -1,5 +1,7 @@
 """Class representing a BingoRecord
 
+see: https://adventofcode.com/2021/day/4
+
 board: two-dimensional array
 board_sorted: sorted flat list of values on board
 marks: count of numbers on board that have been marked X
