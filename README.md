@@ -16,12 +16,14 @@ I'm running Python 3.11.
   * [x] alt approach
 * [x] Day Five
 * [x] Day Six
-* [ ] Day Seven - late!
-* [ ] Day Eight - late!
+* [ ] Day Seven
+* [ ] Day Eight
   * [x] Part One
-* [ ] Day Nine - late!
-* [ ] Day Ten - late!
+* [ ] Day Nine
+* [ ] Day Ten
 * [ ] Day Eleven
+* [ ] Day Twelve
+* [ ] Day Thirteen
 
 
 ### Prep
