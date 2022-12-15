@@ -17,13 +17,15 @@ I'm running Python 3.11.
 * [x] Day Five
 * [x] Day Six
 * [ ] Day Seven
-* [ ] Day Eight
-  * [x] Part One
+* [x] Day Eight
+  * [ ] alt approach
 * [ ] Day Nine
-* [ ] Day Ten
+* [x] Day Ten
+  * [ ] alt approach
 * [ ] Day Eleven
 * [ ] Day Twelve
 * [ ] Day Thirteen
+* [ ] Day Fourteen
 
 
 ### Prep

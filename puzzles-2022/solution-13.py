@@ -1,5 +1,6 @@
 """https://adventofcode.com/2022/day/13"""
 
+import re
 from helpers import files
 
 def part_one():
@@ -21,6 +22,17 @@ def get_valid_packet_indices(lines):
         current_index += 1
     print(valid_indices)
     return valid_indices
+
+def get_count_of_bracket_pairs(line):
+    count_openers = line.count('[')
+    if count_openers != line.count(']'):
+        raise Exception('Mismatched string lists: ' + line)
+    return count_openers
+
+def transform_string_to_list(line, lists):
+    for char in line:
+        print(char)
+    return
 
 # takes two strings that look like lists
 def are_properly_ordered(whole_left, whole_right):
