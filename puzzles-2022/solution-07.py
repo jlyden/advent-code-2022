@@ -1,19 +1,32 @@
 """https://adventofcode.com/2022/day/7
 
-Incomplete
+Part One done
 """
 
 import re
 from helpers import files
 
-def part_one(dir_size_limit):
-    lines = files.get_contents_of_input_file('input-mini-mini.txt')
-    dir_structure = build_directory_structure(lines)
-    requested_sizes = get_dir_sizes(dir_structure, [])
-    return sum(requested_sizes)
+def runner(part):
+    lines = files.get_contents_of_input_file('input-07.txt')
+    dir_structure = build_folded_directory_structure(lines)
+    all_dir_sizes = get_dir_sizes(dir_structure, [])
+    if part == 'one':
+        return sum([size for size in all_dir_sizes if size <= 100000])
+    return get_size_of_dir_to_delete(all_dir_sizes)
 
-# TODO: maybe don't fold it together? make dirs {}
-def build_directory_structure(lines):
+def get_size_of_dir_to_delete(all_dir_sizes):
+    all_dir_sizes.sort()
+    total_size = 70000000
+    update_space_required = 30000000
+    current_space_used = all_dir_sizes.pop()
+    current_space_available = total_size - current_space_used
+    open_space_still_needed = update_space_required - current_space_available
+    # TODO: binary sort would be faster
+    for dir_size in all_dir_sizes:
+        if dir_size >= open_space_still_needed:
+            return dir_size
+
+def build_folded_directory_structure(lines):
     pwd = []
     dirs = []
     for untrimmed_line in lines:
@@ -21,13 +34,16 @@ def build_directory_structure(lines):
         line_type = evaluate_line_type(line)
         match line_type:
             case 'cd':
+                # '$ cd /'
                 pwd.append(line.split(' ')[2])
             case 'ls':
                 dirs.append({})
             case 'dir_name':
+                # 'dir a'
                 dir_name = line.split(' ')[1]
                 dirs[-1].update({dir_name: {}})
             case 'file_name':
+                # '14848514 b.txt'
                 [size, file_name] = line.split(' ')
                 dirs[-1].update({file_name: int(size)})
             case 'cd_back':
@@ -57,20 +73,17 @@ def evaluate_line_type(line):
         raise Exception('Unexpected line: ' + line)
     return type
     
-# TODO: This is wrong, but I am tired
 def get_dir_sizes(dir_structure, dir_sizes):
-    print(str(dir_structure))
+    sum = 0
     for key, value in dir_structure.items():
-        sum = 0
-        print(key)
-        print(value)
         if isinstance(value, dict):
-            dir_sizes.append(sum)
-            print(dir_sizes)
-            return get_dir_sizes(dir_structure[key], dir_sizes)
+            get_dir_sizes(dir_structure[key], dir_sizes)
+            last_subdir_size = dir_sizes[-1]
+            sum += last_subdir_size
         else:
             sum += value
     dir_sizes.append(sum)
     return dir_sizes
 
-print(part_one(100000))
+#print(runner('one'))
+print(runner('two'))

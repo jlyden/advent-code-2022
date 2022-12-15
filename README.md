@@ -16,7 +16,8 @@ I'm running Python 3.11.
   * [x] alt approach
 * [x] Day Five
 * [x] Day Six
-* [ ] Day Seven
+* [x] Day Seven
+  * [ ] alt approach
 * [x] Day Eight
   * [ ] alt approach
 * [ ] Day Nine
