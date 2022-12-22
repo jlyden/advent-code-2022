@@ -27,7 +27,9 @@ I'm running Python 3.11.
 * [ ] Day Twelve
 * [ ] Day Thirteen
 * [ ] Day Fourteen
-
+...
+* [ ] Day Twenty-One
+  * [x] part one (let's take wins where we can)
 
 ### Prep
 Working through some 2021 puzzles to shake the dust off my python.

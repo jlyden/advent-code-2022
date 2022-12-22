@@ -4,7 +4,7 @@ import re
 from helpers import files
 
 def part_one():
-    lines = files.get_contents_of_input_file('input-mini.txt')
+    lines = files.get_contents_of_input_file('input-13.txt')
     valid_packet_indices = get_valid_packet_indices(lines)
     return sum(valid_packet_indices)
 
